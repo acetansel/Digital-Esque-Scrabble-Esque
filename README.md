@@ -24,7 +24,7 @@ They are two kinds to watch out for:
 
 **De facto penalties** which are those which occur during manual board generation as handicaps imposed by faulty board generations.
 
-**classic penalties** which are those imposed by the game during rounds for violations of the word generation.
+**Classic penalties** which are those imposed by the game during rounds for violations of the word generation.
 
 ### De-Facto Penalties
 
