@@ -64,43 +64,45 @@ These are not level of difficulties *per se* but instead packages of the various
 
 #### First Package
 
-* 7-Letter Board
+* 8-Letter Board
 * Scores at the 2nd Base
 * At least 2-letter words
 
 #### Second Package
 
-* 8-Letter Board
+* 9-Letter Board
 * Scores at the 3rd Base
 * At least 3-letter words
 
 #### Third Package
 
-* 9-Letter Board
+* 10-Letter Board
 * Scores at the 4th Base
 * At least 4-letter words
 
 #### Fourth Package
 
-* 10-Letter Board
+* 11-Letter Board
 * Scores at the 5th Base
 * At least 5-letter words
 
 #### Fifth Package
 
-* 11-Letter Board
+* 12-Letter Board
 * Scores at the 6th Base
 * At least 6-letter words
 
 #### Sixth Package
 
-* 12-Letter Board
+* 7-Letter Board
 * Scores at the 7th Base
 * At least 7-letter words
 
 #### Defining "Scores at the nth Base"
 
-Every word
+The worth of each letter in a word is based on an arithmetic progression which begins counting from the upper half (if skewed) of the required length. Once it does, the progression begins from n and increments by n. The score value of the word is the sum of all values in this string. The penalties will also be based on the score base as well as the rank of the violated law which will, once again, be kept concealed until gameplay.
+
+
 
 
 
