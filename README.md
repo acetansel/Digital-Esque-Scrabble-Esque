@@ -119,7 +119,7 @@ Should the system not have a Python interpreter:
 
 The words which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang; instead download deuterogame.py and run it in the same folder with the data of the imported dictionary.
 
-*Be sure to obtain a Python interpreter which can derive data from outside the executed program for the one obtained in the steps above cannot.*
+*Be sure to obtain a Python interpreter which can derive data from outside the executed program; one obtained in the steps above cannot.*
 
 # *Happy Spelling!*
 
