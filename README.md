@@ -6,7 +6,7 @@ It is time to test your ability and affinity with the language that finds its gr
 
 ## Details
 
-This game allows for 1-8 players; the singleplayer mode being a little distinct from the multiplayer mode. As of now, there is no instance of time-controlled gameplay so it is up to the players to decide if and how time shall be controlled. 
+This game allows for 1-8 players; the singleplayer mode being a little distinct from the multiplayer mode. As of now, there is no instance of time-controlled gameplay so it is up to the players to decide if and how time shall be controlled.
 
 The words of which this game will be based on will be found in the words.txt file in the repository. To make changes to this dictionary base for the gameplay, download the entire repository and run deuterogame.py with a Python executable that can retrieve the data.
 
@@ -14,13 +14,13 @@ The words of which this game will be based on will be found in the words.txt fil
 
 ## Gameplay
 
-On every turn, the player simply generates a word from their own in-built dictionary. Depending on the difficulty, scores will be added according to the length of the word they can provide. 
+On every turn, the player simply generates a word from their own in-built dictionary. Depending on the difficulty, scores will be added according to the length of the word they can provide.
 
 The similarity to Scrabble lies in the board of letters which may be provided through automatic or manual work. This board is going to consist of seven to twelve letters depending on the difficulty. In it, there will be a required letter--the letter which must be in every word generated--and optional letters--the letters which don't have to be in every word generated--which together make up the native letters.
 
 ## Penalties
 
-They are two kinds to watch out for: 
+They are two kinds to watch out for:
 
 **De facto penalties** which are those which occur during manual board generation as handicaps imposed by faulty board generations.
 
@@ -30,7 +30,7 @@ They are two kinds to watch out for:
 
 **Budgeting:** Should the player attempt to overshoot the set-by-difficulty board length (nine over seven or fifteen over twelve e.g.) all the overshot letters will be removed and not integrated into the board leaving whatever mess is at the beginning to be the board for the player.
 
-**Betabet:** Characters not in the alphabet of Latin-based letters (called "betabets" by the whims of the creator and no official resource) _can_ be included in the board. However, the game will penalize any word generates which contain such characters, practically reducing the board's scope.
+**Betabet:** Characters not in the alphabet of Latin-based letters (called "betabets" by the whims of the creator and no official resource) *can* be included in the board. However, the game will penalize any word generates which contain such characters, practically reducing the board's scope.
 
 **Overdose:** Every letter in the board can be used multiple times for every word generation, therefore, repeating letters in a board is an unnecessary reduction in scope and practical use.
 
@@ -40,7 +40,7 @@ All of these violations will be caught during the board generation and given jus
 
 **AntiLanguage:** Word with a Betabet character.
 
-**AntiEnglish:** Word not in the given dictionary: "word.txt" for the protogame.py executable and whatever custom list for the deuterogame.py executable. Note that this penalty triggers to misspelling. 
+**AntiEnglish:** Word not in the given dictionary: "word.txt" for the protogame.py executable and whatever custom list for the deuterogame.py executable. Note that this penalty triggers to misspelling.
 
 **Plagiarism:** Word which has been generated in a previous turn in any given gaming cycle.
 
@@ -60,8 +60,47 @@ You shall discover the impact of each penalty during gameplay. For now, keep it 
 
 ## Difficulties: (time to finally explain that thing we keep talking about)
 
-These are not level of difficulties _per se_ but instead packages of the various requirements and scopes.
+These are not level of difficulties *per se* but instead packages of the various requirements and scopes.
 
 #### First Package
 
-Seven-Letter Board
+* 7-Letter Board
+* Scores at the 2nd Base
+* At least 2-letter words
+
+#### Second Package
+
+* 8-Letter Board
+* Scores at the 3rd Base
+* At least 3-letter words
+
+#### Third Package
+
+* 9-Letter Board
+* Scores at the 4th Base
+* At least 4-letter words
+
+#### Fourth Package
+
+* 10-Letter Board
+* Scores at the 5th Base
+* At least 5-letter words
+
+#### Fifth Package
+
+* 11-Letter Board
+* Scores at the 6th Base
+* At least 6-letter words
+
+#### Sixth Package
+
+* 12-Letter Board
+* Scores at the 7th Base
+* At least 7-letter words
+
+#### Defining "Scores at the nth Base"
+
+Every word
+
+
+
