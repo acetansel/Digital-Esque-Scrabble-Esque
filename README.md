@@ -1,3 +1,3 @@
 # Welcome Player
 
-*To a variant of the New York Spelling Bee Game* 
+_To a variant of the New York Spelling Bee Game_
