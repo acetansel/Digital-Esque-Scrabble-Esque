@@ -62,6 +62,6 @@ You shall discover the impact of each penalty during gameplay. For now, keep it 
 
 These are not level of difficulties _per se_ but instead packages of the various requirements and scopes.
 
-####### First Package
+###### First Package
 
 Seven-Letter Board
