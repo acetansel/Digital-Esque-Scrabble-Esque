@@ -12,13 +12,13 @@ The words of which this game will be based on will be found in the words.txt fil
 
 *Be warned because the most ordinary and many Python executables will not be able to retrieve the data from outside itself; this is why protogame.py is data-independent for the game*
 
-## Instructions and Gameplay
+## Gameplay
 
 On every turn, the player simply generates a word from their own in-built dictionary. Depending on the difficulty, scores will be added according to the length of the word they can provide. 
 
 The similarity to Scrabble lies in the board of letters which may be provided through automatic or manual work. This board is going to consist of seven to twelve letters depending on the difficulty. In it, there will be a required letter--the letter which must be in every word generated--and optional letters--the letters which don't have to be in every word generated--which together make up the native letters.
 
-### Penalties
+## Penalties
 
 They are two kinds to watch out for: 
 
@@ -26,7 +26,7 @@ They are two kinds to watch out for:
 
 **classic penalties** which are those imposed by the game during rounds for violations of the word generation.
 
-#### De-Facto Penalties
+### De-Facto Penalties
 
 **Budgeting:** Should the player attempt to overshoot the set-by-difficulty board length (nine over seven or fifteen over twelve e.g.) all the overshot letters will be removed and not integrated into the board leaving whatever mess is at the beginning to be the board for the player.
 
@@ -36,7 +36,7 @@ They are two kinds to watch out for:
 
 All of these violations will be caught during the board generation and given just one more chance to make a new board and correct them; one more chance means the system will take no trolling.
 
-#### Classic Penalties
+### Classic Penalties
 
 **AntiLanguage:** Word with a Betabet character.
 
@@ -52,13 +52,13 @@ All of these violations will be caught during the board generation and given jus
 
 You shall discover the impact of each penalty during gameplay. For now, keep it registered that the requirement for every word is essentially the avoidance of the in-game penalties while the recommendations for every board is that of the de-facto penalties.
 
-### Singleplayer and Multiplayer
+## Singleplayer and Multiplayer
 
 **Singleplayer** is the game with only one user. In this there will be loss and victory for this one player alone according to whether they achieve the independent bar in the number of rounds set by the difficulty.
 
 **Multiplayer** is the game with more than one user. In this there will be victory for one of the players and ranked losses for the others according to their relative standings at the end of the gaming cycle whose number of rounds will may also be automated or manual.
 
-### Difficulties: (time to finally explain that thing we keep talking about)
+## Difficulties: (time to finally explain that thing we keep talking about)
 
 These are not level of difficulties _per se_ but instead packages of the various requirements and scopes.
 
