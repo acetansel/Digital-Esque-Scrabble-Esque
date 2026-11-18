@@ -117,7 +117,7 @@ Should the system not have a Python interpreter:
 * Return to the file and run as normal
 * All data is self-contained so you should not need any file
 
-The words of which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang; instead download deuterogame.py and run it in the same folder with the data of the imported dictionary.
+The words which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang; instead download deuterogame.py and run it in the same folder with the data of the imported dictionary.
 
 *Be sure to obtain a Python interpreter which can derive data from outside the executed program for the one obtained in the steps above cannot.*
 
