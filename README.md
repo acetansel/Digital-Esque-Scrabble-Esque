@@ -57,8 +57,8 @@ These are not level of difficulties *per se* but instead packages of the various
 #### First Package
 
 * 7-Letter Board
-* Scores at the 2nd Base
-* At least 2-letter words
+* Scores at the 3rd Base
+* At least 3-letter words
 
 #### Second Package
 
@@ -98,7 +98,7 @@ The penalties will also be based on the score base as well as the rank of the vi
 
 The singleplayer victory line will be equivalent to the total score, according to every package, of generating words with length equal to the length of the board.
 
-So the average length for the generated words have to be board-length to win solo? No! Because the lower half of the required length which is counted out during player score accumulation will be included in the score accumulation for the victory line. Therefore, a little more will have to be included, being much larger with a higher package.
+_So the average length for the generated words have to be board-length to win solo?_ **No!** Because the lower half of the required length which is counted out during player score accumulation will be included in the score accumulation for the victory line. Therefore, a little more letters than the board length, being much larger with a higher package.
 
 ## Time-Keeping?
 
