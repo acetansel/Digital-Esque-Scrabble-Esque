@@ -1,22 +1,14 @@
 # Welcome Players
 
-**To a variant of the New York Spelling Bee Game**
+#### To a variant of the New York Spelling Bee Game (I think...that's what my professor told me)
 
 It is time to test your ability and affinity with the language that finds its great roots in the language of the Mass and its worldwide affluence through the prosperity of those small islands who stood at the core of a land where the sun never set: we are of course talking about the English Language.
 
-## Details
-
-This game allows for 1-8 players; the singleplayer mode being a little distinct from the multiplayer mode. As of now, there is no instance of time-controlled gameplay so it is up to the players to decide if and how time shall be controlled.
-
-The words of which this game will be based on will be found in the words.txt file in the repository. To make changes to this dictionary base for the gameplay, download the entire repository and run deuterogame.py with a Python executable that can retrieve the data.
-
-*Be warned because the most ordinary and many Python executables will not be able to retrieve the data from outside itself; this is why protogame.py is data-independent for the game*
-
 ## Gameplay
 
-On every turn, the player simply generates a word from their own in-built dictionary. Depending on the difficulty, scores will be added according to the length of the word they can provide.
+On every turn, the player simply generates a word according to the best of their knowledge (or perhaps guesses). Each word will have its score value according to the difficulty chosen and its length so longer words are the key to prosperity here.
 
-The similarity to Scrabble lies in the board of letters which may be provided through automatic or manual work. This board is going to consist of seven to twelve letters depending on the difficulty. In it, there will be a required letter--the letter which must be in every word generated--and optional letters--the letters which don't have to be in every word generated--which together make up the native letters.
+The similarity to Scrabble lies in the board of letters which may be provided through automatic or manual generation. This board is going to consist of seven, eight or nine letters depending on the difficulty. In it, its first letter there will be the required letter (the letter which must be in every word generated) and others will be the optional letters (the letters which don't have to be in every word generated).
 
 ## Penalties
 
@@ -56,7 +48,7 @@ You shall discover the impact of each penalty during gameplay. For now, keep it 
 
 **Singleplayer** is the game with only one user. In this there will be loss and victory for this one player alone according to whether they achieve the independent bar in the number of rounds set by the difficulty.
 
-**Multiplayer** is the game with more than one user. In this there will be victory for one of the players and ranked losses for the others according to their relative standings at the end of the gaming cycle whose number of rounds will may also be automated or manual.
+**Multiplayer** is the game with more than one user (up to eight). In this there will be victory for one of the players and ranked losses for the others according to their relative standings at the end of the gaming cycle whose number of rounds will may also be automated or manual.
 
 ## Difficulties: (time to finally explain that thing we keep talking about)
 
@@ -64,45 +56,72 @@ These are not level of difficulties *per se* but instead packages of the various
 
 #### First Package
 
-* 8-Letter Board
+* 7-Letter Board
 * Scores at the 2nd Base
 * At least 2-letter words
 
 #### Second Package
 
-* 9-Letter Board
+* 8-Letter Board
 * Scores at the 3rd Base
 * At least 3-letter words
 
 #### Third Package
 
-* 10-Letter Board
+* 9-Letter Board
 * Scores at the 4th Base
 * At least 4-letter words
 
 #### Fourth Package
 
-* 11-Letter Board
+* 7-Letter Board
 * Scores at the 5th Base
 * At least 5-letter words
 
 #### Fifth Package
 
-* 12-Letter Board
+* 8-Letter Board
 * Scores at the 6th Base
 * At least 6-letter words
 
 #### Sixth Package
 
-* 7-Letter Board
+* 9-Letter Board
 * Scores at the 7th Base
 * At least 7-letter words
 
 #### Defining "Scores at the nth Base"
 
-The worth of each letter in a word is based on an arithmetic progression which begins counting from the upper half (if skewed) of the required length. Once it does, the progression begins from n and increments by n. The score value of the word is the sum of all values in this string. The penalties will also be based on the score base as well as the rank of the violated law which will, once again, be kept concealed until gameplay.
+The worth of each letter in a word is based on an arithmetic progression which begins counting from the upper half (if skewed) of the required length. Once it does begin, the progression starts from n and increments by n. The score value of the word is the sum of all values in this string. 
 
+The penalties will also be based on the score base as well as the rank of the violated law which will, once again, be kept concealed until gameplay.
 
+The singleplayer victory line will be equivalent to the total score, according to every package, of generating words with length equal to the length of the board.
+
+So the average length for the generated words have to be board-length to win solo? No! Because the lower half of the required length which is counted out during player score accumulation will be included in the score accumulation for the victory line. Therefore, a little more will have to be included, being much larger with a higher package.
+
+## Time-Keeping?
+
+As of now, there is no instance of time control within the program itself to pace the flow of the game and aid with score generation and penalizing. So, if such is desired, another program or manual time-keeping may have to be done to do so. Shall it be done, use the chronoprotogame.py or chronodeuterogame.py executables (analogous to proto and deutero) where it will remain fixed with the second package (and where future updates for in-built time control will hopefully be placed).
+
+## Execution and Data
+
+**All players need is a single device (there is no multi-screen interface anyway) and the protogame.py executable.**
+
+Should the system not have a Python interpreter:
+
+* Shortcut Windows Key + R to open Windows Run
+* Open "powershell" on Windows Run
+* Enter "python" on the console
+* Download the popped up Python manager from the Microsoft Store
+* Return to the file and run as normal
+* All data is self-contained so you should not need any file
+
+The words of which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang; instead download deuterogame.py and run it in the same folder with the data of the imported dictionary.
+
+*Be sure to obtain a Python interpreter which can derive data from outside the executed program for the one obtained in the steps above cannot.*
+
+# *Happy Spelling!*
 
 
 
