@@ -54,7 +54,7 @@ def inputBoard(length, name):
 		budgeting = True
 	for index in range(len(board)-1):
 		for pivot in board[index+1:]:
-			if board[index] == board[pivot]:
+			if board[index] == pivot:
 				duplicate = True
 	if budgeting and duplicate and betabet:
 		print("What a wondeful showing of complete disregard for laws and regulations, ",name, end=", ")
@@ -85,7 +85,72 @@ def wordValue(n,e,inGame):
 		return value - int(e/2)
 	else:
 		return value
-
+def nativeWord(generate, data, multiplayer,playerN):
+	if multiplayer:
+		for letter in generate:
+			if letter in data[playerN][2]:
+				return True
+		return False
+	else:
+		for letter in generate:
+			if letter in data[2]:
+				return True
+		return False
+def headedWord(generate,data,multiplayer,playerN):
+	if multiplayer:
+		for letter in generate:
+			if data[playerN][2][0] == letter:
+				return True
+		return False
+	else:
+		for letter in generate:
+			if data[2][0] == letter:
+				return True
+		return False
+def inputWord(dict, hist, base, data, multiplayer, playerN):
+	generate = input().strip().lower()
+	AntiLanguage = False
+	AntiEnglish = False
+	Plagiarism = False
+	Headless = False
+	Foreign = False
+	Stump = False
+	offences = []
+	penalty = 0
+	if not generate.isalpha():
+		AntiLanguage = True
+		offences.append("AntiLanguage")
+		penalty += base ** 2 * 5
+		print("You have committed the capital offence of AntiLanguage, ", end="")
+	if not generate in dict:
+		AntiEnglish = True
+		offences.append("AntiEnglish")
+		penalty += base ** 2 * 4
+		print("the second offence of AntiEnglish, ", end="")
+	if generate in hist:
+		Plagiarism = True
+		offences.append("Plagiarism")
+		penalty += base ** 2 * 3
+		print("the third offence of Plagiarism, ", end="")
+	if not headedWord(generate, data, multiplayer, playerN):
+		Headless = True
+		offences.append("Headless")
+		penalty += base ** 2 * 2
+		print("the fourth offence of Headless, ", end="")
+	if not nativeWord(generate, data, multiplayer, playerN):
+		Foreign = True
+		offences.append("Foreign")
+		penalty += base ** 2
+		print("the sixth offence of Foreign, ", end="")
+	if len(generate) < base:
+		Stump = True
+		offences.append("Stump")
+		print("the seventh offence of Stump, ", end="")
+	if AntiLanguage or AntiEnglish or Plagiarism or Headless or Foreign or Stump:
+		print("You have committed", sum(offences), "offences being the offences of: ", end="")
+		for offence in offences:
+			print("the", offence, end=", ")
+		print("and have gathered a total penalty of", penalty, "taken away from your score of ", end="")
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
@@ -104,9 +169,10 @@ def main():
 	copyright = []
 	print("Welcome to the game!\nFor binary questions, type and return anything to affirm; type and return nothing to deny.")
 	if not leninput("First question: have you read the readme? "):
-		multiplayer = True
-		return "GO AND READ IT!" * 3
+		print("GO AND READ IT!\n\n\nThen come back and restart the game...thank you for trying.")
+		return None
 	if leninput("Second question: is this going to be a multiplayer game?"):
+		multiplayer = True
 		print("Therefore, do we have two, eight or in-between players: [input the number of players ready to play]: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight inclusive please: "
 		playerScope = inputInteger(error)
@@ -117,11 +183,11 @@ def main():
 		for iteration in range(playerScope):
 			serial = iteration + 1
 			if serial == 1:
-				ordinal = serial + "st"
+				ordinal = str(serial) + "st"
 			elif serial == 2:
-				ordinal = serial + "nd"
+				ordinal = str(serial) + "nd"
 			elif serial == 3:
-				ordinal = serial + "rd"
+				ordinal = str(serial) + "rd"
 			else:
 				ordinal = serial + "th"
 			playerInfo.extend([input("And the name of the",ordinal,"player is: ")])
@@ -165,32 +231,30 @@ def main():
 		rounds = random.randint(10,31)
 		print("Therefore, we will be playing",rounds,"rounds.\nDo you accept this number? [Anything to accept; nothing to reject]", end="")
 		if not leninput():
-			return "If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run."
+			print("If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run.")
+			return None
 		if multiplayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
 			for row in range(playerScope):
 				alphabetDealings = randomize(alphabet)
-				board = ""
 				for letter in alphabetDealings[0:(boardScope - 1)]:
-					board += letter
-				playerInfo[row].append(board)
+					playerInfo[row][2] += letter
 				print("Dear",playerInfo[row][0]) 
 				print("You have these board of letters:",playerInfo[row][1],"recalling that the first is the required and the rest are the optional.")
 				toContinue()
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.")
 			alphabetDealings = randomize(alphabet)
-			board = ""
 			for letter in alphabetDealings[0:(boardScope - 1)]:
-				board += letter
-			playerInfo.append(board)
+				playerInfo[2] += letter
 			print("Dear",playerInfo[0], end=", ")
 			print("This is your board: ",playerInfo[1],"recalling that the first is the required and the rest are the optional.")
 	else:
 		print("**Manual controls selected**\nFirst, the number of rounds: ", end="")
 		rounds = inputInteger("I believe we should be getting a positive number; please endeavour to input a number of rounds that is actually a number of rounds: ")
 		if not leninput("Are you sure about these number of rounds? [Anything to affirm; nothing to deny]"):
-			return "Then restart the game and be sure to enter a number of rounds you actually want\nWhoever is controlling the general inputs; you really need to be more assertive of your options if you're going to do well in this game."	
+			print("Then restart the game and be sure to enter a number of rounds you actually want\nWhoever is controlling the general inputs; you really need to be more assertive of your options if you're going to do well in this game.")
+			return None
 		if multiplayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
 			for row in range(playerScope):
