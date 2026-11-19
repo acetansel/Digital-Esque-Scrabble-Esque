@@ -118,17 +118,31 @@ def main():
 				base = 7
 				boardScope = 9
 	toContinue()
-	if leninput("Fourth question: are we leaving the generation of the boards to automation? "):
+	if leninput("Fourth question: are we leaving the generation of the boards and the selection of the number of rounds to automation? "):
 		rounds = random.randint(10,31)
 		print("Therefore, we will be playing",rounds,"rounds.\nYou may deny (return nothing) to generate a new number if you wish", end="")
 		if not leninput():
 			return "Of course not! If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual this time as the program restarts."
 		if multiplayer:
-			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.")
-			for iteration in range(playerScope):
+			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
+			for row in range(playerScope):
 				alphabetDealings = randomize(alphabet)
-
-
+				board = ""
+				for letter in alphabetDealings[0:(boardScope - 1)]:
+					board += letter
+				playerInfo[row].append(board)
+				print("Dear",playerInfo[row][0]) 
+				print("You have these board of letters:",playerInfo[row][1],"recalling that the first is the required and the rest are the optional.")
+				toContinue()
+		else:
+			print("If you managed to dodge tha trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
+			alphabetDealings = randomize(alphabet)
+			board = ""
+			for letter in alphabetDealings[0:(boardScope - 1)]:
+				board += letter
+			playerInfo.append(board)
+			print("Dear",playerInfo[0], end=" ")
+			print("This is your board: ",playerInfo[1],"recalling that the first is the required and the rest are the optional.")
 while True:
 	main()
 	toLoop()
