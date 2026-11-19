@@ -159,7 +159,8 @@ def inputWord(dict, hist, base, data, multiplayer):
 def main(dictionary, history):
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
-	playerInfo = []
+	singlePlayer = []
+	multiPlayer = []
 	multiplayer = False
 	firstDif = False
 	secondDif = False
@@ -171,13 +172,11 @@ def main(dictionary, history):
 	boardScope = 0
 	playerScope = 0
 	rounds = 0
-	copyright = []
 	print("Welcome to the game!")
 	if not leninput("First question: have you read the readme?\n\tType and return nothing to affirm; type and return anything to deny..."):
 		print("GO AND READ IT!\nSeriously...this code is very vague in instruction becaues the meat of all of them are in the readme so you will do yourself a service in becoming familiar with it.")
 		return None
 	if leninput("Second question: is this going to be a multiplayer game?\n\tType and return nothing to affirm; type and return anything to deny..."):
-		multiplayer = True
 		print("Therefore, from two to eight, how many players do we have: [input the number of players ready to play]: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight inclusive please: "
 		playerScope = inputInteger(error)
@@ -199,13 +198,13 @@ def main(dictionary, history):
 			name = input()
 			board = ""
 			score = 0
-			playerInfo.extend([name,board,score])
+			multiPlayer.extend([name,board,score])
 		print("Names have been loaded into the list (just a little bit of developer jargon for you)...")
 		toContinue()
 	else:
-		playerInfo.append(input("What is your name, solo player? "))
-		playerInfo.append("")
-		playerInfo.append(0)
+		singlePlayer.append(input("What is your name, solo player? "))
+		singlePlayer.append("")
+		singlePlayer.append(0)
 	toContinue()
 	while not (firstDif or secondDif or thirdDif or fourthDif or fifthDif or sixthDif):
 		if leninput("Third question: are we choosing the first difficulty?\n\tType and return nothing to affirm; type and return anything to deny..."):
@@ -240,9 +239,9 @@ def main(dictionary, history):
 		if not leninput():
 			print("If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run.")
 			return None
-		if multiplayer:
+		if multiPlayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
-			for row in playerInfo:
+			for row in multiPlayer:
 				alphabetDealings = randomize(alphabet)
 				for letter in alphabetDealings[0:(boardScope - 1)]:
 					row[1] += letter
@@ -253,52 +252,60 @@ def main(dictionary, history):
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.")
 			alphabetDealings = randomize(alphabet)
 			for letter in alphabetDealings[0:(boardScope - 1)]:
-				playerInfo[1] += letter
-			print("Dear",playerInfo[0], end=", ")
-			print("This is your board: ",playerInfo[1],"recalling that the first is the required and the rest are the optional.")
+				singlePlayer[1] += letter
+			print("Dear",singlePlayer[0], end=", ")
+			print("This is your board: ",singlePlayer[1],"recalling that the first is the required and the rest are the optional.")
 	else:
 		print("**Manual controls selected**\nFirst, the number of rounds: ", end="")
 		rounds = inputInteger("I believe we should be getting a positive number; please endeavour to input a number of rounds that is actually a number of rounds: ")
 		if not leninput("Are you sure about these number of rounds?\n\tType and return nothing to affirm; type and return anything to deny..."):
 			print("Then restart the game and be sure to enter a number of rounds you actually want\nWhoever is controlling the general inputs; you really need to be more assertive of your options if you're going to do well in this game.")
 			return None
-		if multiplayer:
+		if multiPlayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
-			for row in playerInfo:
+			for row in multiPlayer:
 				print("Now let us get the board of", row[0], end=": ")
 				row[1] += inputBoard(boardScope, row[0])
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
-			playerInfo[1] += inputBoard(boardScope, playerInfo[0])
+			singlePlayer[1] += inputBoard(boardScope, singlePlayer[0])
 		toContinue()
 	soloVictory = rounds * (wordValue(boardScope, base, False))
 	print("Now, let us begin!")
-	if not multiplayer:
-		print(playerInfo[0], end="! ")
+	if singlePlayer:
+		print(singlePlayer[0], end="! ")
 		print("Good luck! You will need", soloVictory, "points to win. It's going to be a tough one so make sure you have good affinity with this language.")
 		toContinue()
 		for cycle in range(rounds-1):
-			print("ROUND", str(cycle), "... GO!\nGenerate a word...ANY word...from the letters [",playerInfo[1],"] to bolster your score of [",playerInfo[2],"]: ", end="")
-			inputWord(dictionary, history, base, playerInfo, False, None)
-		print("FINAL ROUND ... LET US BRING OUT ... THE SUPERSTAR ... OR THE SUPERFLOP!")
-		inputWord(dictionary, history, base, playerInfo, False, None)
+			print("ROUND", str(cycle), "... GO!\nGenerate a word...ANY word...from the letters [",singlePlayer[1],"] to bolster your score of [",singlePlayer[2],"]: ", end="")
+			inputWord(dictionary, history, base, singlePlayer, False)
+		print("FINAL ROUND ... LET US BRING OUT ... THE SUPERSTAR ... OR THE SUPERFLOP!\nGenerate a word...ANY word...from the letters [",singlePlayer[1],"] to make the final bolster (or atrophy) for your score of [",singlePlayer[2],"]: ", end="")
+		inputWord(dictionary, history, base, singlePlayer, False, None)
+		if singlePlayer[2] >= soloVictory:
+			print("You win...")
+			print("What?...You thought you were going to get flowery language and a huge celebration...this program is too primitive for that...hype yourself!")
+		else:
+			print("You lose...")
+			print("What?...You thought you were going to get strong language and a pity fest?...this program is too primitive for that...do that yourself.")
+		toLoop()
 	else:
 		print("In this game...we have: ", end="")
-		for player in playerInfo[:-2]:
+		for player in singlePlayer[:-2]:
 			print(player[0], end=", ")
-		print("and", playerInfo[-1][0], "\nWhich one of you shall come out on top and which shall be the bottom feeder?\nAll of you can say what you want; but the game never lies.")
+		print("and", singlePlayer[-1][0], "\nWhich one of you shall come out on top and which shall be the bottom feeder?\nAll of you can say what you want; but the game never lies.")
 		toContinue()
 		for cycle in range(rounds-1):
 			print("ROUND", str(cycle), "... FIGHT!")
-			for fighter in playerInfo:
+			for fighter in multiPlayer:
 				print("Dear", fighter[0], end=", ")
 				print("please make a word...ANY word...from your board of letters [",fighter[1],"] to bolster your score of [",fighter[2],"]: ", end="")
 				inputWord(dictionary, history, base, fighter, True)
 		print("FINAL ROUND ... LET US BRING OUT ... THE KING AND THE PEASANT ... THE SUPERSTAR AND SUPERABYSS!")
-		for fighter in playerInfo:
+		for fighter in multiPlayer:
 			print("Dear", fighter[0], end=", ")
 			print("please make a word...YOUR LAST WORD...from your board of letters [",fighter[1],"] to make the final bolster (or atrophy) for your score of [",fighter[2],"]: ", end="")
 			inputWord(dictionary,history,base,fighter,True)
+		
 while True:
 	dictionary = []
 	history = []
