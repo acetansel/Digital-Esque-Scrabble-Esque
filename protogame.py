@@ -79,8 +79,13 @@ def inputBoard(length, name):
 	else:
 		pass
 	return board
-def wordValue(word):
-	return 0.5 
+def wordValue(n,e,inGame):
+	value = e * n + e * (n/2) * (n - 1)
+	if inGame:
+		return value - int(e/2)
+	else:
+		return value
+
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
@@ -196,7 +201,12 @@ def main():
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
 			playerInfo.append(inputBoard(boardScope, playerInfo[0]))
 			toContinue()
-	soloVictory = 
+		
+	soloVictory = rounds * (wordValue(boardScope, base, False))
+	print("Now, let us begin!")
+	if not multiplayer:
+		print(playerInfo[0], end="! ")
+		print("Good luck! You will need", soloVictory, "points to win. It's going to be a tough one so make sure you have good affinity with this language.")
 while True:
 	main()
 	toLoop()
