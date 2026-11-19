@@ -242,18 +242,18 @@ def main(dictionary, history):
 			return None
 		if multiplayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
-			for row in range(playerScope):
+			for row in playerInfo:
 				alphabetDealings = randomize(alphabet)
 				for letter in alphabetDealings[0:(boardScope - 1)]:
-					playerInfo[row][2] += letter
-				print("Dear",playerInfo[row][0]) 
-				print("You have these board of letters:",playerInfo[row][1],"recalling that the first is the required and the rest are the optional.")
+					row[1] += letter
+				print("Dear",row[0]) 
+				print("You have these board of letters:",row[1],"recalling that the first is the required and the rest are the optional.")
 				toContinue()
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.")
 			alphabetDealings = randomize(alphabet)
 			for letter in alphabetDealings[0:(boardScope - 1)]:
-				playerInfo[2] += letter
+				playerInfo[1] += letter
 			print("Dear",playerInfo[0], end=", ")
 			print("This is your board: ",playerInfo[1],"recalling that the first is the required and the rest are the optional.")
 	else:
@@ -264,12 +264,12 @@ def main(dictionary, history):
 			return None
 		if multiplayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
-			for row in range(playerScope):
-				print("Now let us get the board of", playerInfo[row][0], end=": ")
-				playerInfo[row][1] = inputBoard(boardScope, playerInfo[row][0])
+			for row in playerInfo:
+				print("Now let us get the board of", row[0], end=": ")
+				row[1] += inputBoard(boardScope, row[0])
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
-			playerInfo.append(inputBoard(boardScope, playerInfo[0]))
+			playerInfo[1] += inputBoard(boardScope, playerInfo[0])
 		toContinue()
 	soloVictory = rounds * (wordValue(boardScope, base, False))
 	print("Now, let us begin!")
