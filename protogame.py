@@ -43,6 +43,8 @@ def randomize(deck):
 	for iteration in range(len(deck[:])):
 		newdeck.append(deck.pop(random.randint(0,len(deck))))
 	return newdeck
+def inputBoard(length):
+	board = input().strip().lower()
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
@@ -120,9 +122,9 @@ def main():
 	toContinue()
 	if leninput("Fourth question: are we leaving the generation of the boards and the selection of the number of rounds to automation? "):
 		rounds = random.randint(10,31)
-		print("Therefore, we will be playing",rounds,"rounds.\nYou may deny (return nothing) to generate a new number if you wish", end="")
+		print("Therefore, we will be playing",rounds,"rounds.\nDo you accept this number? [Anything to accept; nothing to reject]", end="")
 		if not leninput():
-			return "Of course not! If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual this time as the program restarts."
+			return "If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run."
 		if multiplayer:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and give each player their boards.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
 			for row in range(playerScope):
@@ -135,14 +137,28 @@ def main():
 				print("You have these board of letters:",playerInfo[row][1],"recalling that the first is the required and the rest are the optional.")
 				toContinue()
 		else:
-			print("If you managed to dodge tha trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
+			print("If you managed to dodge that trap to a forceful restart; we can move on and give you your board.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.")
 			alphabetDealings = randomize(alphabet)
 			board = ""
 			for letter in alphabetDealings[0:(boardScope - 1)]:
 				board += letter
 			playerInfo.append(board)
-			print("Dear",playerInfo[0], end=" ")
+			print("Dear",playerInfo[0], end=", ")
 			print("This is your board: ",playerInfo[1],"recalling that the first is the required and the rest are the optional.")
-while True:
-	main()
-	toLoop()
+	else:
+		print("**Manual controls selected**\nFirst, the number of rounds: ", end="")
+		rounds = inputInteger("I believe we should be getting a positive number; please endeavour to input a number of rounds that is actually a number of rounds: ")
+		if not leninput("Are you sure about these number of rounds? [Anything to affirm; nothing to deny]"):
+			return "Then restart the game and be sure to enter a number of rounds you actually want\nWhoever is controlling the general inputs; you really need to be more assertive of your options if you're going to do well in this game."	
+		if multiplayer:
+			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
+			for row in range(playerScope):
+				print("Now let us get the board of", playerInfo[row][0], end=": ")
+				playerInfo[row].append(inputBoard(boardScope))
+				toContinue()
+		else:
+			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
+			playerInfo.append(inputBoard(boardScope))
+			toContinue()
+main()
+toLoop()
