@@ -43,8 +43,44 @@ def randomize(deck):
 	for iteration in range(len(deck[:])):
 		newdeck.append(deck.pop(random.randint(0,len(deck))))
 	return newdeck
-def inputBoard(length):
+def inputBoard(length, name):
 	board = input().strip().lower()
+	budgeting = False
+	betabet = False
+	duplicate = False
+	if not board.isalpha():
+		betabet = True
+	if len(board) > length:
+		budgeting = True
+	for index in range(len(board)-1):
+		for pivot in board[index+1:]:
+			if board[index] == board[pivot]:
+				duplicate = True
+	if budgeting and duplicate and betabet:
+		print("What a wondeful showing of complete disregard for laws and regulations, ",name, end=", ")
+		print("You somehow brought all three de facto penalties upon yourself.\nWell, here's your second try to generate a board with a proper length, characters and variability: ", end="")
+		board = input.strip().lower()
+	elif (budgeting and duplicate) or (budgeting and betabet) or (duplicate and betabet):
+		print("Double strike, ",name, end=", ")
+		print("You hit yourself with two out of three de facto penalties. Better be sure to avoid such magic for the rest of the game.\nHere's your second try to generate a board that won't screw you over: ", end="")
+		board = input().strip().lower()
+	elif budgeting:
+		print("Dear", name, end=", ")
+		print("You have been charged with the Budgeting penalty...attempting to place too many letters into your board, the excess of which will be cut off.\nHere's your second try to generate a board that actually considered its vital firsts: ", end="")
+		board = input().strip().lower()
+	elif betabet:
+		print("Dear", name, end=", ")
+		print("You have been charged with the Betabet penalty...attempting to place a letter which is not Latin nor alphanumerical.\nHere's your second try to generate a board maximizing its useful element: ", end="")
+		board = input().strip().lower()
+	elif duplicate:
+		print("Dear", name, end=", ")
+		print("You have been charged with the Duplicate penalty...putting in a letter more than once because you probably didn't read the Readme.\nHere's your second try to generate a board minimizing redundancy: ", end="")
+		board = input().strip().lower()
+	else:
+		pass
+	return board
+def wordValue(word):
+	return 0.5 
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
@@ -93,7 +129,7 @@ def main():
 		playerInfo.append("")
 		playerInfo.append(0)
 	toContinue()
-	while firstDif or secondDif or thirdDif or fourthDif or fifthDif or sixthDif:
+	while not (firstDif or secondDif or thirdDif or fourthDif or fifthDif or sixthDif):
 		if leninput("Third question: are we choosing the first difficulty?"):
 			firstDif = True
 			base = 3
@@ -120,7 +156,7 @@ def main():
 				base = 7
 				boardScope = 9
 	toContinue()
-	if leninput("Fourth question: are we leaving the generation of the boards and the selection of the number of rounds to automation? "):
+	if leninput("Fourth question: are we leaving the generation of the boards and the determination of the number of rounds to automation? "):
 		rounds = random.randint(10,31)
 		print("Therefore, we will be playing",rounds,"rounds.\nDo you accept this number? [Anything to accept; nothing to reject]", end="")
 		if not leninput():
@@ -154,11 +190,13 @@ def main():
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
 			for row in range(playerScope):
 				print("Now let us get the board of", playerInfo[row][0], end=": ")
-				playerInfo[row].append(inputBoard(boardScope))
+				playerInfo[row].append(inputBoard(boardScope, playerInfo[row][0]))
 				toContinue()
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
-			playerInfo.append(inputBoard(boardScope))
+			playerInfo.append(inputBoard(boardScope, playerInfo[0]))
 			toContinue()
-main()
-toLoop()
+	soloVictory = 
+while True:
+	main()
+	toLoop()

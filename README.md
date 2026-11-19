@@ -28,6 +28,8 @@ They are two kinds to watch out for:
 
 All of these violations will be caught during the board generation and given just one more chance to make a new board and correct them; one more chance means the system will take no trolling.
 
+_Note: underdosing is also a violation but it won't be caught by the system; so better you overdo it instead of underdoing it if you lose count somehow_
+
 ### Classic Penalties
 
 **AntiLanguage:** Word with a Betabet character.
