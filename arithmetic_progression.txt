@@ -1,5 +1,0 @@
-Sum = (n/2)*(a+l)
-l = a + d(n-1)
-Sum = (n/2)*(a + a + dn - d)
-Sum = (n/2)*(2a + dn - d)
-Sum = an + d(n/2)(n-1)

@@ -178,7 +178,7 @@ def main(dictionary, history):
 		return None
 	if leninput("Second question: is this going to be a multiplayer game?\n\tType and return nothing to affirm; type and return anything to deny..."):
 		multiplayer = True
-		print("Therefore, do we have two, eight or in-between players: [input the number of players ready to play]: ", end="")
+		print("Therefore, from two to eight, how many players do we have: [input the number of players ready to play]: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight inclusive please: "
 		playerScope = inputInteger(error)
 		while playerScope < 2 or playerScope > 8:
@@ -195,9 +195,11 @@ def main(dictionary, history):
 				ordinal = str(serial) + "rd"
 			else:
 				ordinal = serial + "th"
-			playerInfo.extend([input("And the name of the",ordinal,"player is: ")])
-			playerInfo[iteration].append("")
-			playerInfo[iteration].append(0)
+			print("And the name of the",ordinal,"player is: ",end="")
+			name = input()
+			board = ""
+			score = 0
+			playerInfo.extend([name,board,score])
 		print("Names have been loaded into the list (just a little bit of developer jargon for you)...")
 		toContinue()
 	else:
@@ -264,7 +266,7 @@ def main(dictionary, history):
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get each of the players' board.\nRemember that the first letter given will be the requirement and the rest shall be optional.\nAnd don't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep every players' board displayed as it is their turn.")
 			for row in range(playerScope):
 				print("Now let us get the board of", playerInfo[row][0], end=": ")
-				playerInfo[row].append(inputBoard(boardScope, playerInfo[row][0]))
+				playerInfo[row][1] = inputBoard(boardScope, playerInfo[row][0])
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
 			playerInfo.append(inputBoard(boardScope, playerInfo[0]))
@@ -284,7 +286,7 @@ def main(dictionary, history):
 		print("In this game...we have: ", end="")
 		for player in playerInfo[:-2]:
 			print(player[0], end=", ")
-		print("and", playerInfo[-1][0], "\nwhich one of you shall come out on top and which shall be the bottom feeder?\nAll of you can say what you want; but the game never lies.")
+		print("and", playerInfo[-1][0], "\nWhich one of you shall come out on top and which shall be the bottom feeder?\nAll of you can say what you want; but the game never lies.")
 		toContinue()
 		for cycle in range(rounds-1):
 			print("ROUND", str(cycle), "... FIGHT!")
@@ -292,7 +294,11 @@ def main(dictionary, history):
 				print("Dear", fighter[0], end=", ")
 				print("please make a word...ANY word...from your board of letters [",fighter[1],"] to bolster your score of [",fighter[2],"]: ", end="")
 				inputWord(dictionary, history, base, fighter, True)
-		
+		print("FINAL ROUND ... LET US BRING OUT ... THE KING AND THE PEASANT ... THE SUPERSTAR AND SUPERABYSS!")
+		for fighter in playerInfo:
+			print("Dear", fighter[0], end=", ")
+			print("please make a word...YOUR LAST WORD...from your board of letters [",fighter[1],"] to make the final bolster (or atrophy) for your score of [",fighter[2],"]: ", end="")
+			inputWord(dictionary,history,base,fighter,True)
 while True:
 	dictionary = []
 	history = []
