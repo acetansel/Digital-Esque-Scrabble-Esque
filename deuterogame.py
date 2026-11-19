@@ -6,7 +6,7 @@ nofile = "File not found; please check directories and try again."
 dictionary = protogame.filetoOneVarList(protogame.inputFile(nofile))
 print("The game shall run with this new dictionary now...")
 protogame.toContinue()
-history = []
 while True:
-    protogame.main(dictionary, history)
+    history = []
+    protogame.main(dictionary)
     protogame.toLoop()
