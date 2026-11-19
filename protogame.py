@@ -85,29 +85,17 @@ def wordValue(n,e,inGame):
 		return value - int(e/2)
 	else:
 		return value
-def nativeWord(generate,data,multiplayer,playerN):
-	if multiplayer:
-		for letter in generate:
-			if letter in data[playerN][1]:
-				return True
-		return False
-	else:
-		for letter in generate:
-			if letter in data[1]:
-				return True
-		return False
-def headedWord(generate,data,multiplayer,playerN):
-	if multiplayer:
-		for letter in generate:
-			if data[playerN][1][0] == letter:
-				return True
-		return False
-	else:
-		for letter in generate:
-			if data[1][0] == letter:
-				return True
-		return False
-def inputWord(dict, hist, base, data, multiplayer, playerN):
+def nativeWord(generate,data):
+	for letter in generate:
+		if letter in data[1]:
+			return True
+	return False
+def headedWord(generate,data):
+	for letter in generate:
+		if data[1][0] == letter:
+			return True
+	return False
+def inputWord(dict, hist, base, data, multiplayer):
 	generate = input().strip().lower()
 	AntiLanguage = False
 	AntiEnglish = False
@@ -132,12 +120,12 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 		offences.append("Plagiarism")
 		penalty += base ** 2 * 3
 		print("the third offence of Plagiarism, ", end="")
-	if not headedWord(generate, data, multiplayer, playerN):
+	if not headedWord(generate, data):
 		Headless = True
 		offences.append("Headless")
 		penalty += base ** 2 * 2
 		print("the fourth offence of Headless, ", end="")
-	if not nativeWord(generate, data, multiplayer, playerN):
+	if not nativeWord(generate, data):
 		Foreign = True
 		offences.append("Foreign")
 		penalty += base ** 2
@@ -153,10 +141,10 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 		print("and the", offences[-1])
 		print("With all of this, a penalty of", penalty, "has been accumulated and removed from your score, reducing it to", end=" ")
 		if multiplayer:
-			data[playerN][2] -= penalty
-			print(data[playerN][2], end="! ")
+			data[2] -= penalty
+			print(data[2], end="! ")
 			print()
-			print(data[playerN][0], end=", ")
+			print(data[0], end=", ")
 			print("you might want to get serious if you're going to beat your foes.")
 		else:
 			data[2] -= penalty
@@ -165,14 +153,10 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 			print("you might want to get serious if you're going to win this game.")
 	else:
 		print("Treasure in; Treasure Out!\nA great word generation for a score of", wordValue(len(generate), base, True))
-		if multiplayer:
-			data[playerN][2] += wordValue(len(generate), base, True)
-			print("Keep this up", data[playerN][0], "and you may have a chance with this new score of", data[playerN][2])
-		else:
-			data[2] += wordValue(len(generate), base, True) 
-			print("Keep this up", data[0], "and you may have a chance with this new score of", data[2])
+		data[2] += wordValue(len(generate), base, True) 
+		print("Keep this up", data[0], "and you may have a chance with this new score of", data[2])
 		hist.append(generate)
-def main():
+def main(dictionary, history):
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
 	playerInfo = []
@@ -290,8 +274,27 @@ def main():
 	if not multiplayer:
 		print(playerInfo[0], end="! ")
 		print("Good luck! You will need", soloVictory, "points to win. It's going to be a tough one so make sure you have good affinity with this language.")
-	for cycle in range(rounds):
-		print()
+		toContinue()
+		for cycle in range(rounds-1):
+			print("ROUND", str(cycle), "... GO!\nGenerate a word...ANY word...from the letters [",playerInfo[1],"] to bolster your score of [",playerInfo[2],"]: ", end="")
+			inputWord(dictionary, history, base, playerInfo, False, None)
+		print("FINAL ROUND ... LET US BRING OUT ... THE SUPERSTAR ... OR THE SUPERFLOP!")
+		inputWord(dictionary, history, base, playerInfo, False, None)
+	else:
+		print("In this game...we have: ", end="")
+		for player in playerInfo[:-2]:
+			print(player[0], end=", ")
+		print("and", playerInfo[-1][0], "\nwhich one of you shall come out on top and which shall be the bottom feeder?\nAll of you can say what you want; but the game never lies.")
+		toContinue()
+		for cycle in range(rounds-1):
+			print("ROUND", str(cycle), "... FIGHT!")
+			for fighter in playerInfo:
+				print("Dear", fighter[0], end=", ")
+				print("please make a word...ANY word...from your board of letters [",fighter[1],"] to bolster your score of [",fighter[2],"]: ", end="")
+				inputWord(dictionary, history, base, fighter, True)
+		
 while True:
-	main()
+	dictionary = []
+	history = []
+	main(dictionary, history)
 	toLoop()
