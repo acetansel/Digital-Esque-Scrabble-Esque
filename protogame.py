@@ -85,26 +85,26 @@ def wordValue(n,e,inGame):
 		return value - int(e/2)
 	else:
 		return value
-def nativeWord(generate, data, multiplayer,playerN):
+def nativeWord(generate,data,multiplayer,playerN):
 	if multiplayer:
 		for letter in generate:
-			if letter in data[playerN][2]:
+			if letter in data[playerN][1]:
 				return True
 		return False
 	else:
 		for letter in generate:
-			if letter in data[2]:
+			if letter in data[1]:
 				return True
 		return False
 def headedWord(generate,data,multiplayer,playerN):
 	if multiplayer:
 		for letter in generate:
-			if data[playerN][2][0] == letter:
+			if data[playerN][1][0] == letter:
 				return True
 		return False
 	else:
 		for letter in generate:
-			if data[2][0] == letter:
+			if data[1][0] == letter:
 				return True
 		return False
 def inputWord(dict, hist, base, data, multiplayer, playerN):
@@ -148,9 +148,20 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 		print("the seventh offence of Stump, ", end="")
 	if AntiLanguage or AntiEnglish or Plagiarism or Headless or Foreign or Stump:
 		print("You have committed", sum(offences), "offences being the offences of: ", end="")
-		for offence in offences:
+		for index in range(len(offences)-1):
 			print("the", offence, end=", ")
-		print("and have gathered a total penalty of", penalty, "taken away from your score of ", end="")
+		print("and the", offences[-1])
+		print("With all of this, a penalty of", penalty, "has been accumulated and removed from your score, reducing it to", end=" ")
+		if multiplayer:
+			data[playerN][2] -= penalty
+			print(data[playerN][2], end="! ")
+			print(data[playerN][0], end=", ")
+			print("you might want to get serious if you're going to beat your foes.")
+		else:
+			data[2] -= penalty
+			print(data[2], end="! ")
+			print(data[0], end=", ")
+			print("you might want to get serious if you're going to win this game.")
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
