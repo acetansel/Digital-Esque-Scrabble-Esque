@@ -35,8 +35,8 @@ def filetoTwoVarList(fileInQuestion, splittingItem):
 	return list
 def leninput(string):
 	if len(input(string)) > 0:
-		return True
-	return False
+		return False
+	return True
 def randomize(deck):
 	import random
 	newdeck = []
@@ -149,12 +149,13 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 	if AntiLanguage or AntiEnglish or Plagiarism or Headless or Foreign or Stump:
 		print("You have committed", sum(offences), "offences being the offences of: ", end="")
 		for index in range(len(offences)-1):
-			print("the", offence, end=", ")
+			print("the", offences[index], end=", ")
 		print("and the", offences[-1])
 		print("With all of this, a penalty of", penalty, "has been accumulated and removed from your score, reducing it to", end=" ")
 		if multiplayer:
 			data[playerN][2] -= penalty
 			print(data[playerN][2], end="! ")
+			print()
 			print(data[playerN][0], end=", ")
 			print("you might want to get serious if you're going to beat your foes.")
 		else:
@@ -162,6 +163,15 @@ def inputWord(dict, hist, base, data, multiplayer, playerN):
 			print(data[2], end="! ")
 			print(data[0], end=", ")
 			print("you might want to get serious if you're going to win this game.")
+	else:
+		print("Treasure in; Treasure Out!\nA great word generation for a score of", wordValue(len(generate), base, True))
+		if multiplayer:
+			data[playerN][2] += wordValue(len(generate), base, True)
+			print("Keep this up", data[playerN][0], "and you may have a chance with this new score of", data[playerN][2])
+		else:
+			data[2] += wordValue(len(generate), base, True) 
+			print("Keep this up", data[0], "and you may have a chance with this new score of", data[2])
+		hist.append(generate)
 def main():
 	import random
 	alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'y', 'v', 'w', 'x', 'y', 'z']
@@ -178,11 +188,11 @@ def main():
 	playerScope = 0
 	rounds = 0
 	copyright = []
-	print("Welcome to the game!\nFor binary questions, type and return anything to affirm; type and return nothing to deny.")
-	if not leninput("First question: have you read the readme? "):
-		print("GO AND READ IT!\n\n\nThen come back and restart the game...thank you for trying.")
+	print("Welcome to the game!")
+	if not leninput("First question: have you read the readme?\n\tType and return nothing to affirm; type and return anything to deny..."):
+		print("GO AND READ IT!\nSeriously...this code is very vague in instruction becaues the meat of all of them are in the readme so you will do yourself a service in becoming familiar with it.")
 		return None
-	if leninput("Second question: is this going to be a multiplayer game?"):
+	if leninput("Second question: is this going to be a multiplayer game?\n\tType and return nothing to affirm; type and return anything to deny..."):
 		multiplayer = True
 		print("Therefore, do we have two, eight or in-between players: [input the number of players ready to play]: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight inclusive please: "
@@ -212,7 +222,7 @@ def main():
 		playerInfo.append(0)
 	toContinue()
 	while not (firstDif or secondDif or thirdDif or fourthDif or fifthDif or sixthDif):
-		if leninput("Third question: are we choosing the first difficulty?"):
+		if leninput("Third question: are we choosing the first difficulty?\n\tType and return nothing to affirm; type and return anything to deny..."):
 			firstDif = True
 			base = 3
 			boardScope = 7
@@ -233,14 +243,14 @@ def main():
 			base = 6
 			boardScope = 8
 		else:
-			if not leninput("The sixth difficulty will be de facto chosen unless we receive a decision to loop through the difficulties once again until a decision is made...are we looping?"):
+			if not leninput("The sixth difficulty will be de facto chosen unless we receive a decision to loop through the difficulties once again until a decision is made...well?\n\tType and return nothing to affirm; type and return anything to deny..."):
 				sixthDif = True
 				base = 7
 				boardScope = 9
 	toContinue()
-	if leninput("Fourth question: are we leaving the generation of the boards and the determination of the number of rounds to automation? "):
+	if leninput("Fourth question: are we leaving the generation of the boards and the determination of the number of rounds to automation?\n\tType and return nothing to affirm; type and return anything to deny..."):
 		rounds = random.randint(10,31)
-		print("Therefore, we will be playing",rounds,"rounds.\nDo you accept this number? [Anything to accept; nothing to reject]", end="")
+		print("Therefore, we will be playing",rounds,"rounds.\nDo you accept this number?\n\tType and return nothing to affirm; type and return anything to deny...", end="")
 		if not leninput():
 			print("If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run.")
 			return None
@@ -263,7 +273,7 @@ def main():
 	else:
 		print("**Manual controls selected**\nFirst, the number of rounds: ", end="")
 		rounds = inputInteger("I believe we should be getting a positive number; please endeavour to input a number of rounds that is actually a number of rounds: ")
-		if not leninput("Are you sure about these number of rounds? [Anything to affirm; nothing to deny]"):
+		if not leninput("Are you sure about these number of rounds?\n\tType and return nothing to affirm; type and return anything to deny..."):
 			print("Then restart the game and be sure to enter a number of rounds you actually want\nWhoever is controlling the general inputs; you really need to be more assertive of your options if you're going to do well in this game.")
 			return None
 		if multiplayer:
@@ -271,17 +281,17 @@ def main():
 			for row in range(playerScope):
 				print("Now let us get the board of", playerInfo[row][0], end=": ")
 				playerInfo[row].append(inputBoard(boardScope, playerInfo[row][0]))
-				toContinue()
 		else:
 			print("If you managed to dodge that trap to a forceful restart; we can move on and get your board.\nRemeber that the first letter you give will be your requirements and the rest shall be optional.\nDon't get apprehensive about attempting to remember them or have them written down somewhere; the system will keep your board displayed at all times.\nNow please solemnly enter the letters: ", end="")
 			playerInfo.append(inputBoard(boardScope, playerInfo[0]))
-			toContinue()
-		
+		toContinue()
 	soloVictory = rounds * (wordValue(boardScope, base, False))
 	print("Now, let us begin!")
 	if not multiplayer:
 		print(playerInfo[0], end="! ")
 		print("Good luck! You will need", soloVictory, "points to win. It's going to be a tough one so make sure you have good affinity with this language.")
+	for cycle in range(rounds):
+		print()
 while True:
 	main()
 	toLoop()
