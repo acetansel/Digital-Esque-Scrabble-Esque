@@ -78,6 +78,8 @@ def inputBoard(length, name):
 		board = input().strip().lower()
 	else:
 		pass
+	if len(board) > length:
+		return board[:length-1]
 	return board
 def wordValue(n,e,inGame):
 	value = e * n + e * (n/2) * (n - 1)
@@ -185,32 +187,27 @@ def main(dictionary):
 		singlePlayer.append("")
 		singlePlayer.append(0)
 	toContinue()
-	while not (firstDif or secondDif or thirdDif or fourthDif or fifthDif or sixthDif):
-		if leninput("Third question: are we choosing the first difficulty?\n\tType and return nothing to affirm; type and return anything to deny..."):
-			firstDif = True
-			base = 3
-			boardScope = 7
-		elif leninput("What about the second difficulty?"):
-			secondDif = True
-			base = 3
-			boardScope = 8
-		elif leninput("...third difficulty?"):
-			thirdDif = True
-			base = 4
-			boardScope = 9
-		elif leninput("...fourth difficulty?"):
-			fourthDif = True
-			base = 5
-			boardScope = 7
-		elif leninput("...fifth difficulty?"):
-			fifthDif = True
-			base = 6
-			boardScope = 8
-		else:
-			if not leninput("The sixth difficulty will be de facto chosen unless we receive a decision to loop through the difficulties once again until a decision is made...well?\n\tType and return nothing to affirm; type and return anything to deny..."):
-				sixthDif = True
-				base = 7
-				boardScope = 9
+	if leninput("Third question: are we choosing the first difficulty?\n\tType and return nothing to affirm; type and return anything to deny..."):
+		base = 3
+		boardScope = 14
+	elif leninput("What about the second difficulty?"):
+		base = 3
+		boardScope = 15
+	elif leninput("...third difficulty?"):
+		base = 4
+		boardScope = 16
+	elif leninput("...fourth difficulty?"):
+		base = 5
+		boardScope = 14
+	elif leninput("...fifth difficulty?"):
+		base = 6
+		boardScope = 15
+	else:
+		base = 7
+		boardScope = 16
+		if not leninput("The sixth difficulty has been chosen by process of elimination; do you accept? \n\tType and return nothing to affirm; type and return anything to deny..."):
+			print("Love to break it to you that the process of elimination cannot be defied.\nNo matter; upon this next return, the program will restart so you can choose your desired package on the next loop. And if you want to know how they work...go to the readme.")
+			return None
 	toContinue()
 	if leninput("Fourth question: are we leaving the generation of the boards and the determination of the number of rounds to automation?\n\tType and return nothing to affirm; type and return anything to deny..."):
 		rounds = random.randint(10,31)

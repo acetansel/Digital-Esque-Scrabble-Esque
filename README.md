@@ -58,37 +58,37 @@ These are not level of difficulties *per se* but instead packages of the various
 
 #### First Package
 
-* 7-Letter Board
+* 14-Letter Board
 * Scores at the 3rd Base
 * At least 3-letter words
 
 #### Second Package
 
-* 8-Letter Board
+* 15-Letter Board
 * Scores at the 3rd Base
 * At least 3-letter words
 
 #### Third Package
 
-* 9-Letter Board
+* 16-Letter Board
 * Scores at the 4th Base
 * At least 4-letter words
 
 #### Fourth Package
 
-* 7-Letter Board
+* 14-Letter Board
 * Scores at the 5th Base
 * At least 5-letter words
 
 #### Fifth Package
 
-* 8-Letter Board
+* 15-Letter Board
 * Scores at the 6th Base
 * At least 6-letter words
 
 #### Sixth Package
 
-* 9-Letter Board
+* 16-Letter Board
 * Scores at the 7th Base
 * At least 7-letter words
 
