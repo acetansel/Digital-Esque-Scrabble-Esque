@@ -165,7 +165,7 @@ def main(dictionary):
 			print(error)
 			numofPlayers = inputInteger(error)
 		lineout()
-		print("**Collecting names**")
+		print("**Collecting Names**")
 		lineout()
 		for i in range(numofPlayers):
 			print("And the name of the",lexiconRank[i+1],"player is: ",end="")
@@ -174,16 +174,16 @@ def main(dictionary):
 			score = 0
 			multiPlayer.extend([name,board,score])
 		lineout()
-		print("**Names stored**")
+		print("**Names Stored**")
 		lineout()
 	else:
-		print("**Receving name**")
+		print("**Receiving Name**")
 		lineout()
 		singlePlayer.append(input("What is your name, lone player? "))
 		singlePlayer.append("")
 		singlePlayer.append(0)
 		lineout()
-		print("**Name stored**")
+		print("**Name Stored**")
 		lineout()
 	if leninput("\tType and return nothing to affirm; type and return anything to deny...\nSecond question: are we choosing the first difficulty?"):
 		base = 3
@@ -259,7 +259,7 @@ def main(dictionary):
 				row[1] += inputBoard(lenofBoard, row[0])
 				lineout()
 		else:
-			print("**Receiving Boards from Input**\nFirst Note: your board will be displayed at every turn.\nSecond Note: recall that first letter of the board is required and the others are optional.")
+			print("**Receiving Board from Input**\nFirst Note: your board will be displayed at every turn.\nSecond Note: recall that first letter of the board is required and the others are optional.")
 			lineout()
 			print("Now, generate your board: ", end="")
 			singlePlayer[1] += inputBoard(lenofBoard, singlePlayer[0])
