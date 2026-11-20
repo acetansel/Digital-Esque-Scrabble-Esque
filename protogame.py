@@ -177,6 +177,7 @@ def main(dictionary):
 		print("**Names Stored**")
 		lineout()
 	else:
+		lineout()
 		print("**Receiving Name**")
 		lineout()
 		singlePlayer.append(input("What is your name, lone player? "))
@@ -188,27 +189,27 @@ def main(dictionary):
 	if leninput("\tType and return nothing to affirm; type and return anything to deny\nSecond question: are we choosing the first difficulty? "):
 		base = 3
 		lenofBoard = 14
-		print("**Set to 1st Difficulty**")
+		print(lineout(), "\n**Set to 1st Difficulty**")
 	elif leninput("What about the second difficulty? "):
 		base = 3
 		lenofBoard = 15
-		print("**Set to 2nd Difficulty**")
+		print(lineout(), "\n**Set to 2nd Difficulty**")
 	elif leninput("...third difficulty?"):
 		base = 4
 		lenofBoard = 16
-		print("**Set to 3rd Difficulty**")
+		print(lineout(), "\n**Set to 3rd Difficulty**")
 	elif leninput("...fourth difficulty?"):
 		base = 5
 		lenofBoard = 14
-		print("**Set to 4th Difficulty**")
+		print(lineout(), "\n**Set to 4th Difficulty**")
 	elif leninput("...fifth difficulty?"):
 		base = 6
 		lenofBoard = 15
-		print("**Set to 5th Difficulty**")
+		print(lineout(), "\n**Set to 5th Difficulty**")
 	else:
 		base = 7
 		lenofBoard = 16
-		print("**Set to 6th Difficulty**")
+		print(lineout(), "\n**Set to 6th Difficulty**")
 		if not leninput("by process of elimination; do you accept?\nReturn nothing to accept... "):
 			print("Love to break it to you that the process of elimination cannot be defied.\nNo matter; upon this next return, the program will restart so you can choose your desired package on the next loop. And if you want to know how they work...go to the readme.")
 			return None
