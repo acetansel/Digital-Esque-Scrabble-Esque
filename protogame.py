@@ -158,7 +158,9 @@ def main(dictionary):
 		return None
 	lineout()
 	if leninput("\tType and return nothing to affirm; type and return anything to deny\nReal first question: is this going to be a multiplayer game? "):
-		print("Then how many players do we have: ", end="")
+		lineout()
+		print("**Multiplayer Mode Set**")
+		print("How many players do we have: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight please: "
 		numofPlayers = inputInteger(error)
 		while numofPlayers < 2 or numofPlayers > 8:
@@ -166,7 +168,6 @@ def main(dictionary):
 			numofPlayers = inputInteger(error)
 		lineout()
 		print("**Collecting Names**")
-		lineout()
 		for i in range(numofPlayers):
 			print("And the name of the",lexiconRank[i+1],"player is: ",end="")
 			name = input()
@@ -179,7 +180,6 @@ def main(dictionary):
 	else:
 		lineout()
 		print("**Receiving Name**")
-		lineout()
 		singlePlayer.append(input("What is your name, lone player? "))
 		singlePlayer.append("")
 		singlePlayer.append(0)
@@ -219,7 +219,7 @@ def main(dictionary):
 		lineout()
 		print("**Deriving Round Number**")
 		rounds = random.randint(3,31)
-		print("Number of rounds to be played:",rounds,end=". Do you accept?\nReturn nothing to accept...")
+		print("Number of rounds to be played:",rounds,end=". Do you accept? Return nothing to accept. ")
 		if not leninput():
 			print("If you knew you had a specific number in mind; why didn't you pick manual? No problem, be sure to be manual with this new program run.")
 			return None
@@ -248,8 +248,8 @@ def main(dictionary):
 		lineout()
 		print("Number of rounds: ", end="")
 		rounds = inputInteger("I believe we should be getting a positive number; please endeavour to input a number of rounds that is actually a number of rounds: ")
-		if not leninput("\tType and return nothing to affirm; type and return anything to deny...\nDid you make a mistake and wish to restart the program to enter a new number of rounds?"):
-			print("Then do so.\nWhoever is controlling the general inputs, you really need to be more assertive of your options if you're going to do well in this game.")
+		if not leninput("Do you confirm? Return nothing to confirm. "):
+			print("You may now restart the program and load the round number you want or switch to auto [3-30] if you are too indecisive.")
 			return None
 		lineout()
 		if multiPlayer:
