@@ -153,11 +153,11 @@ def main(dictionary):
 	lineout()
 	print("Welcome to the game!")
 	lineout()
-	if not leninput("\tType and return nothing to affirm; type and return anything to deny...\nFirst question: have you read the readme?"):
+	if not leninput("\tType and return nothing to affirm; type and return anything to deny\nFirst question: have you read the readme? "):
 		print("GO AND READ IT!\nSeriously...this code is very vague in instruction becaues the meat of that is in the readme so you will do yourself a service in becoming familiar with it.")
 		return None
 	lineout()
-	if leninput("\tType and return nothing to affirm; type and return anything to deny...\nReal first question: is this going to be a multiplayer game?"):
+	if leninput("\tType and return nothing to affirm; type and return anything to deny\nReal first question: is this going to be a multiplayer game? "):
 		print("Then how many players do we have: ", end="")
 		error = "This is why we read the readme and understand it folks; an integer from two to eight please: "
 		numofPlayers = inputInteger(error)
@@ -185,11 +185,11 @@ def main(dictionary):
 		lineout()
 		print("**Name Stored**")
 		lineout()
-	if leninput("\tType and return nothing to affirm; type and return anything to deny...\nSecond question: are we choosing the first difficulty?"):
+	if leninput("\tType and return nothing to affirm; type and return anything to deny\nSecond question: are we choosing the first difficulty? "):
 		base = 3
 		lenofBoard = 14
 		print("**Set to 1st Difficulty**")
-	elif leninput("What about the second difficulty?"):
+	elif leninput("What about the second difficulty? "):
 		base = 3
 		lenofBoard = 15
 		print("**Set to 2nd Difficulty**")
@@ -209,11 +209,11 @@ def main(dictionary):
 		base = 7
 		lenofBoard = 16
 		print("**Set to 6th Difficulty**")
-		if not leninput("by process of elimination; do you accept?\nReturn nothing to accept..."):
+		if not leninput("by process of elimination; do you accept?\nReturn nothing to accept... "):
 			print("Love to break it to you that the process of elimination cannot be defied.\nNo matter; upon this next return, the program will restart so you can choose your desired package on the next loop. And if you want to know how they work...go to the readme.")
 			return None
 	lineout()
-	if leninput("\tType and return nothing to affirm; type and return anything to deny...\nThird question: are we leaving the generation of the boards and the determination of the number of rounds to automation?\nNote: autmoated round numbers are at least 3 and at most 30 rounds"):
+	if leninput("\tType and return nothing to affirm; type and return anything to deny and not that automated round numbers are at least 3 and at most 30 rounds.\nThird question: are we leaving the generation of the boards and the determination of the number of rounds to automation? "):
 		print("**Automatic Generation Selected**")
 		lineout()
 		print("**Deriving Round Number**")
