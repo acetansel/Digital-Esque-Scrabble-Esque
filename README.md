@@ -64,13 +64,13 @@ These are not level of difficulties *per se* but instead packages of the various
 
 #### Second Package
 
-* 15-Letter Board
+* 16-Letter Board
 * Scores at the 3rd Base
 * At least 3-letter words
 
 #### Third Package
 
-* 16-Letter Board
+* 18-Letter Board
 * Scores at the 4th Base
 * At least 4-letter words
 
@@ -82,13 +82,13 @@ These are not level of difficulties *per se* but instead packages of the various
 
 #### Fifth Package
 
-* 15-Letter Board
+* 16-Letter Board
 * Scores at the 6th Base
 * At least 6-letter words
 
 #### Sixth Package
 
-* 16-Letter Board
+* 18-Letter Board
 * Scores at the 7th Base
 * At least 7-letter words
 
@@ -98,21 +98,23 @@ The worth of each letter in a word is based on an arithmetic progression which b
 
 The penalties will also be based on the score base as well as the rank of the violated law which will, once again, be kept concealed until gameplay.
 
-The singleplayer victory line will be equivalent to the total score, according to every package, of generating words with length equal to the length of the board.
+The singleplayer victory line will be equivalent to the score accumlated by generating words of half the length of the boards in every round (therefore scaling up the more rounds are being played).
 
-_So the average length for the generated words have to be board-length to win solo?_ **No!** Because the lower half of the required length which is counted out during player score accumulation will be included in the score accumulation for the victory line. Therefore, a little more letters than the board length, being much larger with a higher package.
+_So the average length for the generated words only has to be half board-length to win solo?_ 
+
+**No!** 
+
+That is for administrative score setting; for ingame score setting, half of the required length (upper half when skewed) is counted out during score accumulation; more letters than the board length will be required on the average round to succeed; increasingly more letters with every difficulty level.
 
 ## Time-Keeping?
 
-As of now, there is no instance of time control within the program itself to pace the flow of the game and aid with score generation and penalizing. So, if such is desired, another program or manual time-keeping may have to be done to do so. Shall it be done, use the chronoprotogame.py or chronodeuterogame.py executables (analogous to proto and deutero) where it will remain fixed with the second package (and where future updates for in-built time control will hopefully be placed).
+As of now, there is no instance of time control within the program itself to pace the flow of the game and aid with score generation and penalizing. So, if such is desired, another program or manual time-keeping may have to accompany this one.
 
 ## Execution and Data
 
-**All players need is a single device (there is no multi-screen interface anyway) and the protogame.py executable.**
+[Get the protogame.py application here](https://studentsloyola-my.sharepoint.com/:u:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque/protogame.py?d=w08a114d8fe6941fb88dffd2660244040&csf=1&web=1&e=O5vSXJ)
 
-[Get the protogam.py application here](https://studentsloyola-my.sharepoint.com/:u:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque/protogame.py?d=w08a114d8fe6941fb88dffd2660244040&csf=1&web=1&e=O5vSXJ)
-
-[Get the whole repository to run deuterogame.py here](https://studentsloyola-my.sharepoint.com/:u:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque/deuterogame.py?d=w2accdbba23ac4bfba059ce9f7b075e87&csf=1&web=1&e=LQkuvw)
+[Get deuteurogame.py by installing the whole folder here](https://studentsloyola-my.sharepoint.com/:f:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque?d=w18fffe1e75b648aeb2370d6128c48c4e&csf=1&web=1&e=wuYeI2)
 
 Should the system not have a Python interpreter:
 
