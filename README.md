@@ -110,6 +110,10 @@ As of now, there is no instance of time control within the program itself to pac
 
 **All players need is a single device (there is no multi-screen interface anyway) and the protogame.py executable.**
 
+[Get the protogam.py application here](https://studentsloyola-my.sharepoint.com/:u:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque/protogame.py?d=w08a114d8fe6941fb88dffd2660244040&csf=1&web=1&e=O5vSXJ)
+
+[Get the whole repository to run deuterogame.py here](https://studentsloyola-my.sharepoint.com/:u:/r/personal/oeberendu_loyola_edu/Documents/Documents/GitHub/Digital-Esque-Scrabble-Esque/deuterogame.py?d=w2accdbba23ac4bfba059ce9f7b075e87&csf=1&web=1&e=LQkuvw)
+
 Should the system not have a Python interpreter:
 
 * Shortcut Windows Key + R to open Windows Run
@@ -119,9 +123,9 @@ Should the system not have a Python interpreter:
 * Return to the file and run as normal
 * All data is self-contained so you should not need any file
 
-The words which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang; instead download deuterogame.py and run it in the same folder with the data of the imported dictionary.
+The words which define this game is the dictionary defined in "words.txt". If you wish to modify this dictionary or use a different one to include some niche words or slang, be sure to run deuterogame.py in the same folder as protogame.py and "words.txt".
 
-*Be sure to obtain a Python interpreter which can derive data from outside the executed program; one obtained in the steps above cannot.*
+*Be sure to obtain a Python interpreter which can derive data from outside the executed program; the one obtained in the steps above cannot.*
 
 # *Happy Spelling!*
 
