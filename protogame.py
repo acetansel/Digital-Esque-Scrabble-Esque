@@ -43,7 +43,7 @@ def leninput(string):
 def randomize(deck):
 	import random
 	newdeck = []
-	for iteration in range(len(deck[:])):
+	for iteration in deck[:]:
 		newdeck.append(deck.pop(random.randint(0,len(deck))))
 	return newdeck
 def inputBoard(length, name):
