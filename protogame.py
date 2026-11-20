@@ -84,12 +84,13 @@ def inputBoard(length, name):
 	if len(board) > length:
 		return board[:length-1]
 	return board
-def wordValue(n,e,inGame):
-	value = e * n + e * (n/2) * (n - 1)
-	if inGame:
-		return value - int(e/2)
+def wordValue(n,e,administration):
+	import math
+	if administration:
+		return e * n + e * (n/2) * (n - 1)
 	else:
-		return value
+		n -= math.ceil(e/2)
+		return e * n + e * (n/2) * (n - 1)
 def nativeWord(generate,data):
 	for letter in generate:
 		if letter in data[1]:
@@ -137,8 +138,8 @@ def inputWord(dict, hist, base, data, multiplayer):
 		else:
 			print("Hey", data[0], end=", you might want to get serious if you're going to win this game.\n")
 	else:
-		print("Treasure in; Treasure Out!\nA great word generation valued at", wordValue(len(generate), base, True))
-		data[2] += wordValue(len(generate), base, True) 
+		print("Treasure in; Treasure Out!\nA great word generation valued at", wordValue(len(generate), base, False))
+		data[2] += wordValue(len(generate), base, False) 
 		print("Keep this up", data[0], "and you may have a chance with this new score of", data[2])
 		hist.append(generate)
 def main(dictionary):
@@ -192,11 +193,11 @@ def main(dictionary):
 		print(lineout(), "\n**Set to 1st Difficulty**")
 	elif leninput("What about the second difficulty? "):
 		base = 3
-		lenofBoard = 15
+		lenofBoard = 16
 		print(lineout(), "\n**Set to 2nd Difficulty**")
 	elif leninput("...third difficulty?"):
 		base = 4
-		lenofBoard = 16
+		lenofBoard = 18
 		print(lineout(), "\n**Set to 3rd Difficulty**")
 	elif leninput("...fourth difficulty?"):
 		base = 5
@@ -204,11 +205,11 @@ def main(dictionary):
 		print(lineout(), "\n**Set to 4th Difficulty**")
 	elif leninput("...fifth difficulty?"):
 		base = 6
-		lenofBoard = 15
+		lenofBoard = 16
 		print(lineout(), "\n**Set to 5th Difficulty**")
 	else:
 		base = 7
-		lenofBoard = 16
+		lenofBoard = 18
 		print(lineout(), "\n**Set to 6th Difficulty**")
 		if not leninput("by process of elimination; do you accept?\nReturn nothing to accept... "):
 			print("Love to break it to you that the process of elimination cannot be defied.\nNo matter; upon this next return, the program will restart so you can choose your desired package on the next loop. And if you want to know how they work...go to the readme.")
@@ -268,7 +269,7 @@ def main(dictionary):
 	print("Now, let us begin!")
 	lineout()
 	if singlePlayer:
-		soloVictory = rounds * (wordValue(lenofBoard, base, False))
+		soloVictory = rounds * (wordValue(lenofBoard/2, base, True))
 		print(singlePlayer[0], end="! ")
 		print("Good luck! You will need", soloVictory, "points to win. It's going to be a tough one so make sure you studied well.")
 		for cycle in range(1, rounds):
